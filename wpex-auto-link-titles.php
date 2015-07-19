@@ -16,6 +16,7 @@ if ( is_admin() ) {
 	return;
 }
 
+// This is the main plugin function - does everything.
 function wpex_auto_add_link_titles( $content ) {
 
 	// No need to do anything if there isn't any content
@@ -48,6 +49,7 @@ function wpex_auto_add_link_titles( $content ) {
 	if ( ! empty( $links ) ) {
 		foreach ( $links as $text => $link ) {
 			if ( $link && $text ) {
+				$text    = ucwords( $text );
 				$replace = $link .'" title="'. $text .'"';
 				$content = str_replace( $link .'"', $replace, $content );
 			}
