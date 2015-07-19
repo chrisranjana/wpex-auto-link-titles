@@ -11,11 +11,6 @@
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-// Only needed on the front-end
-if ( is_admin() ) {
-	return;
-}
-
 // This is the main plugin function - does everything.
 function wpex_auto_add_link_titles( $content ) {
 
@@ -89,4 +84,9 @@ function wpex_auto_add_link_titles( $content ) {
 	return $content;
 
 }
+
+// Edit content on the front end
 add_filter( 'the_content', 'wpex_auto_add_link_titles' );
+
+// Edit content in the backend before editing so title attributes are added on save.
+add_filter( 'content_edit_pre', 'wpex_auto_add_link_titles', 10, 2 );
