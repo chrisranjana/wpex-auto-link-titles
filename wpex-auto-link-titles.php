@@ -21,7 +21,7 @@ function wpex_auto_add_link_titles( $content ) {
 
 	// No need to do anything if there isn't any content or if DomDocument isn't supported
 	if ( empty( $content ) || ! class_exists( 'DOMDocument' ) ) {
-		return;
+		return $content;
 	}
 
 	// Define links array
